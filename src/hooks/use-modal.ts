@@ -1,14 +1,12 @@
-import { useState } from 'react';
+import {
+  getIsModalAuthOpen,
+  getIsModalContactOpen,
+} from '../store/process/process-selectors';
+import { useTypedSelector } from './use-typed-selector';
 
 export const useModal = () => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const isModalAuthOpen = useTypedSelector(getIsModalAuthOpen);
+  const isModalContactOpen = useTypedSelector(getIsModalContactOpen);
 
-  const handleModalClose = () => {
-    setIsModalOpen(false);
-  };
-  const handleModalOpen = () => {
-    setIsModalOpen(true);
-  };
-
-  return { isModalOpen, handleModalClose, handleModalOpen };
+  return { isModalAuthOpen, isModalContactOpen };
 };

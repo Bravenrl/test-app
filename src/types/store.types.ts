@@ -1,4 +1,4 @@
-import { ContactNew } from "./data.types";
+import { ContactNew } from './data.types';
 
 export type UserInitialState = {
   user: string;
@@ -6,7 +6,8 @@ export type UserInitialState = {
   error: string | undefined | null;
 };
 
-export type DataInitialState = {
-   contact: ContactNew,
-  };
-  
+export type ProcessInitialState = {
+  isModalAuthOpen: boolean;
+  isModalContactOpen: boolean;
+  currentContact: ContactNew;
+};

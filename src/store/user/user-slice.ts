@@ -3,17 +3,20 @@ import { Slice } from '../../config/store.config';
 import { UserInitialState } from '../../types/store.types';
 import { login, registration } from './user-thunk-actions';
 
-
 const initialState: UserInitialState = {
   user: '',
   isLoading: false,
-  error: null
+  error: null,
 };
 
 export const userSlice = createSlice({
   name: Slice.AppUser,
   initialState,
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      state = initialState;
+    },
+  },
   extraReducers(builder) {
     builder
       .addCase(registration.pending, (state) => {
@@ -41,8 +44,8 @@ export const userSlice = createSlice({
       .addCase(login.rejected, (state, { error }) => {
         state.isLoading = false;
         state.error = error.message;
-      })
+      });
   },
 });
 
-export const { reducer: userReducer } = userSlice;
+export const { reducer: userReducer, actions: userActions } = userSlice;
