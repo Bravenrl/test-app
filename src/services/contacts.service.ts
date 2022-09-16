@@ -2,7 +2,7 @@ import { api } from '../api/api';
 import { ApiRoutes } from '../config/api.config';
 import { Contact, ContactNew } from '../types/data.types';
 
-export const AuthService = {
+export const ContactsService = {
     async getAll(searchTerm?: string) {
         return api.get<Contact[]>(ApiRoutes.Contacts, {
           params: searchTerm

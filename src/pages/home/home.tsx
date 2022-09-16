@@ -1,5 +1,5 @@
 import ModalAuth from '../../components/modal-auth/modal-auth';
-import AuthButton from '../../components/ui/auth-button/auth-button';
+import AuthButton from '../../components/ui/auth-link/auth-linl';
 import { useModal } from '../../hooks/use-modal';
 import MainLayout from '../../layouts/main-layout/main-layout';
 import ModalLayout from '../../layouts/modal-layout/modal-layout';

@@ -4,7 +4,7 @@ import { AuthDataReq, AuthDataRes } from '../types/data.types';
 
 export const AuthService = {
   async registration(reqData: AuthDataReq) {
-    return await api.post<AuthDataRes>(ApiRoutes.Users, { reqData });
+    return await api.post<AuthDataRes>(ApiRoutes.Users, reqData);
   },
 
   async login(reqData: AuthDataReq) {
