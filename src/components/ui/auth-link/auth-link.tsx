@@ -1,20 +1,20 @@
 import cx from 'classnames';
 import { Link } from 'react-router-dom';
 import { AppRoute } from '../../../config/app.config';
+import { useAuth } from '../../../hooks/use-auth';
+import { useModal } from '../../../hooks/use-modal';
 
-type AuthLinkProps = {
-  isAuth: boolean;
-  isModalOpen: boolean;
-  handleModalOpen: () => void;
-};
-const AuthLink = ({ isAuth, handleModalOpen, isModalOpen }: AuthLinkProps) => {
+const AuthLink = () => {
+  const { isModalAuthOpen } = useModal();
+  const { isAuth } = useAuth();
+
   return isAuth ? (
     <Link
       to={AppRoute.Contacts}
       className={cx(
         'bg-green-400 h-44 w-1/2 flex-center rounded-xl shadow-lg active:shadow-none hover:bg-green-500 transition-opacity max-w-lg',
         {
-          'opacity-0 scale-0': isModalOpen,
+          'opacity-0 scale-0': isModalAuthOpen,
         }
       )}
     >
@@ -27,7 +27,7 @@ const AuthLink = ({ isAuth, handleModalOpen, isModalOpen }: AuthLinkProps) => {
       className={cx(
         'bg-red-400 h-44 w-1/2 flex-center rounded-xl shadow-lg active:shadow-none hover:bg-red-500 transition-opacity max-w-lg',
         {
-          'opacity-0': isModalOpen,
+          'opacity-0': isModalAuthOpen,
         }
       )}
     >

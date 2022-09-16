@@ -1,11 +1,12 @@
+import { useActions } from '../../../hooks/use-actions';
 import { Contact } from '../../../types/data.types';
 import MaterialIcon from '../material-icon/material-icon';
 
 type CardProps = {
   contact: Contact;
-  handleModalOpen: () => void;
 };
-const Card = ({ contact: { name, city, phone, email }, handleModalOpen }: CardProps) => {
+const Card = ({ contact: { name, city, phone, email } }: CardProps) => {
+  const { toggleModalContact } = useActions();
   return (
     <div className='w-full h-full max-w-xl max-h-xl py-4'>
       <div className='rounded-lg mx-auto py-3 px-3 flex bg-white justify-around shadow-lg border border-gray-200 flex-nowrap'>
@@ -30,7 +31,8 @@ const Card = ({ contact: { name, city, phone, email }, handleModalOpen }: CardPr
           </a>
         </div>
         <div className='flex flex-col justify-around self-center h-28'>
-          <button onClick={handleModalOpen}
+          <button
+            onClick={()=>toggleModalContact()}
             type='button'
             aria-label='Edit'
             className='text-indigo-600 hover:text-indigo-800 active:opacity-20'

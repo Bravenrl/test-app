@@ -1,13 +1,17 @@
+import { ReactNode } from 'react';
+import { useActions } from '../../hooks/use-actions';
+
 type ModalLayoutProps = {
-  handleModalClose: () => void;
-  children: JSX.Element;
+  children: ReactNode;
 };
-const ModalLayout = ({ handleModalClose, children }: ModalLayoutProps) => {
+const ModalLayout = ({ children }: ModalLayoutProps) => {
+  const { closeAllModals } = useActions();
   return (
-    <div onClick={handleModalClose} className='bg-black bg-opacity-20 w-screen h-screen z-0 absolute top-0'>
-      <div className='fixed w-full h-full flex-center'>
-        {children}
-        </div>
+    <div onClick={()=>closeAllModals()}
+      className='bg-black bg-opacity-20 w-screen h-screen z-0 absolute top-0'
+      
+    >
+      <div className='fixed w-full h-full flex-center'>{children}</div>
     </div>
   );
 };

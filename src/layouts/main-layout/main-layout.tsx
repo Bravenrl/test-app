@@ -2,13 +2,17 @@ import { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import ButtonBig from '../../components/ui/button-big/button-big';
 import { AppRoute } from '../../config/app.config';
+import { useActions } from '../../hooks/use-actions';
+import { useAuth } from '../../hooks/use-auth';
 
 type MainLayoutProps = {
   children: ReactNode;
 };
 
 const MainLayout = ({ children }: MainLayoutProps) => {
-  const isUser = !!'';
+  const { isAuth } = useAuth();
+  const {logout, toggleModalAuth} = useActions();
+
   return (
     <>
       <header className='shadow bg-slate-300'>
@@ -19,17 +23,19 @@ const MainLayout = ({ children }: MainLayoutProps) => {
           >
             Test App
           </Link>
-          {isUser ? (
+          {isAuth ? (
             <ButtonBig
-              handleModalOpen={() => {}}
-              classNameButton={'bg-green-700 hover:bg-green-800 focus:ring-green-300'}
+              buttonClickHandler={logout}
+              classNameButton={
+                'bg-green-700 hover:bg-green-800 focus:ring-green-300'
+              }
               classNameBox={'hover:ring-green-500 hover:border-green-500'}
             >
               Logout
             </ButtonBig>
           ) : (
             <ButtonBig
-              handleModalOpen={() => {}}
+              buttonClickHandler={toggleModalAuth}
               classNameButton={'bg-red-700 hover:bg-red-800 focus:ring-red-300'}
               classNameBox={'hover:ring-red-500 hover:border-red-500'}
             >
