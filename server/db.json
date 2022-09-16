@@ -1,0 +1,47 @@
+{
+  "contacts": [
+    {
+      "name": "Second 2 Contact",
+      "phone": "+01112223344",
+      "email": "contact@example.com",
+      "city": "Moscow",
+      "id": 1
+    },
+    {
+      "name": "Second Contact",
+      "phone": "+01112223344",
+      "email": "contact@example.com",
+      "city": "Moscow",
+      "id": 2
+    },
+    {
+      "name": "Second Contact",
+      "phone": "+01112223344",
+      "email": "contact@example.com",
+      "city": "Moscow",
+      "id": 3
+    }
+  ],
+  "users": [
+    {
+      "email": "typicode@gmail.com",
+      "password": "typicode",
+      "id": 1
+    },
+    {
+      "email": "user3@mail.me",
+      "password": "$2a$10$s/tAaXAsW297nbFsz1m.Bu8EIwW1C917MH6S.AnlizrzmCmRkzYCm",
+      "id": 2
+    },
+    {
+      "email": "user@auth.ru",
+      "password": "$2a$10$OpJP17TZpn/nWU6nx4RpsuP0tLHAmw0jmSQzvpL1ongmkzh1WCuEu",
+      "id": 3
+    },
+    {
+      "email": "user2@auth.ru",
+      "password": "$2a$10$I7S6k9bLZiTP9bGc1q59suGtSC3O6x/u/VWndAFKJT8oYaHl0sjjK",
+      "id": 4
+    }
+  ]
+}
