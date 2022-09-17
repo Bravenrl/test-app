@@ -1,5 +1,5 @@
 import { Reducer } from '../../config/store.config';
-import { ContactNew } from '../../types/data.types';
+import { Contact } from '../../types/data.types';
 import { TypeRootState } from '../root-reducer';
 
 export const getIsModalAuthOpen = (state: TypeRootState): boolean =>
@@ -8,7 +8,7 @@ export const getIsModalAuthOpen = (state: TypeRootState): boolean =>
 export const getIsModalContactOpen = (state: TypeRootState): boolean =>
   state[Reducer.Process].isModalContactOpen;
 
-export const getCurrentContact = (state: TypeRootState): ContactNew =>
+export const getCurrentContact = (state: TypeRootState): Contact =>
   state[Reducer.Process].currentContact;
 
 export const getSearchTerm = (state: TypeRootState): string =>

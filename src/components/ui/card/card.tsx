@@ -1,3 +1,4 @@
+import { useDeleteContactMutation } from '../../../api/contactsApi';
 import { useActions } from '../../../hooks/use-actions';
 import { Contact } from '../../../types/data.types';
 import MaterialIcon from '../material-icon/material-icon';
@@ -5,8 +6,10 @@ import MaterialIcon from '../material-icon/material-icon';
 type CardProps = {
   contact: Contact;
 };
-const Card = ({ contact: { name, city, phone, email } }: CardProps) => {
+const Card = ({ contact }: CardProps) => {
   const { toggleModalContact, setCurrentContact } = useActions();
+  const [deleteContact] = useDeleteContactMutation();
+  const { name, city, phone, email, id } = contact;
   return (
     <div className='w-full h-full max-w-xl max-h-xl py-4'>
       <div className='rounded-lg mx-auto py-3 px-3 flex bg-white justify-around shadow-lg border border-gray-200 flex-nowrap'>
@@ -34,7 +37,7 @@ const Card = ({ contact: { name, city, phone, email } }: CardProps) => {
           <button
             onClick={() => {
               toggleModalContact();
-              setCurrentContact({ name, city, phone, email });
+              setCurrentContact(contact);
             }}
             type='button'
             aria-label='Edit'
@@ -43,6 +46,7 @@ const Card = ({ contact: { name, city, phone, email } }: CardProps) => {
             <MaterialIcon name='MdEdit' className='w-6 h-6' />
           </button>
           <button
+            onClick={() => {deleteContact(id)}}
             type='button'
             aria-label='Delete'
             className='text-indigo-600 hover:text-indigo-800 active:opacity-20'

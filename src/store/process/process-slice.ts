@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Slice } from '../../config/store.config';
-import { ContactNew } from '../../types/data.types';
+import { Contact } from '../../types/data.types';
 import { ProcessInitialState } from '../../types/store.types';
 
 const initialState: ProcessInitialState = {
   isModalAuthOpen: false,
   isModalContactOpen: false,
-  currentContact: {} as ContactNew,
+  currentContact: {} as Contact,
   searchTerm: '',
 };
 
@@ -23,13 +23,13 @@ export const processSlice = createSlice({
     closeAllModals: (state) => {
       state.isModalAuthOpen = false;
       state.isModalContactOpen = false;
-      state.currentContact = {} as ContactNew;
+      state.currentContact = {} as Contact;
     },
-    setCurrentContact: (state, { payload }: PayloadAction<ContactNew>) => {
+    setCurrentContact: (state, { payload }: PayloadAction<Contact>) => {
       state.currentContact = payload;
     },
     clearCurrentContact: (state) => {
-      state.currentContact = {} as ContactNew;
+      state.currentContact = {} as Contact;
     },
     setSearchTerm: (state, { payload }: PayloadAction<string>) => {
       state.searchTerm = payload;

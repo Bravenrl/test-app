@@ -1,4 +1,4 @@
-import { useActions } from '../../hooks/use-actions';
+import { useContactForm } from '../../hooks/use-contact-form';
 import { useModal } from '../../hooks/use-modal';
 import { useTypedSelector } from '../../hooks/use-typed-selector';
 import ModalLayout from '../../layouts/modal-layout/modal-layout';
@@ -8,12 +8,21 @@ import ModalCloseButton from '../ui/modal-close-button/modal-close-button';
 
 const ModalContact = () => {
   const { isModalContactOpen } = useModal();
-  const { toggleModalContact, clearCurrentContact } = useActions();
-  const { name, phone, city, email } = useTypedSelector(getCurrentContact);
+  const { name, phone, city, email, id} = useTypedSelector(getCurrentContact);
+
   const isCreate = name === undefined;
 
-
-  
+  const {
+    nameRef,
+    cityRef,
+    phoneRef,
+    emailRef,
+    isLoading,
+    isError,
+    handleSubmit,
+    toggleModalContact,
+    clearCurrentContact,
+  } = useContactForm(id);
 
   if (!isModalContactOpen) return null;
   return (
@@ -21,7 +30,6 @@ const ModalContact = () => {
       <div
         onClick={(e) => {
           e.stopPropagation();
-          clearCurrentContact();
         }}
         className='bg-white z-10 rounded-2xl py-10 px-8 relative min-h-max min-w-max max-w-2xl w-1/2'
       >
@@ -36,7 +44,7 @@ const ModalContact = () => {
             {isCreate ? 'Create contact' : 'Edit contact'}
           </h2>
         </div>
-        <form className='mt-8 space-y-6'>
+        <form onSubmit={handleSubmit} className='mt-8 space-y-6'>
           <div className='-space-y-px rounded-md shadow-sm flex flex-col gap-4'>
             <div>
               <label htmlFor='name' className='sr-only'>
@@ -51,6 +59,7 @@ const ModalContact = () => {
                 className='relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 placeholder='Name'
                 defaultValue={name}
+                ref={nameRef}
               />
             </div>
             <div>
@@ -66,6 +75,7 @@ const ModalContact = () => {
                 placeholder='Email address'
                 defaultValue={email}
                 required
+                ref={emailRef}
               />
             </div>
             <div>
@@ -80,6 +90,7 @@ const ModalContact = () => {
                 className='relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 placeholder='Phone'
                 defaultValue={phone}
+                ref={phoneRef}
               />
             </div>
             <div>
@@ -93,15 +104,18 @@ const ModalContact = () => {
                 className='relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 placeholder='City'
                 defaultValue={city}
+                ref={cityRef}
               />
             </div>
           </div>
           <div className='flex items-center justify-center text-sm text-red-700'>
-            Check the entered data
+            {isError ? 'Check the entered data' : ''}
           </div>
 
           <div className='flex items-center justify-around'>
-            <Button type='submit'>{isCreate ? 'Create' : 'Edit'}</Button>
+            <Button type='submit' isDisabled={isLoading}>
+              {isCreate ? 'Create' : 'Edit'}
+            </Button>
           </div>
         </form>
       </div>

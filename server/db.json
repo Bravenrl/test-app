@@ -1,9 +1,9 @@
 {
   "contacts": [
     {
-      "name": "Second 2 Contact",
-      "phone": "+01112223344",
+      "name": "First Contact",
       "email": "contact@example.com",
+      "phone": "+01112223344",
       "city": "Moscow",
       "id": 1
     },
@@ -12,14 +12,14 @@
       "phone": "+01112223344",
       "email": "contact@example.com",
       "city": "Moscow",
-      "id": 2
+      "id": 3
     },
     {
-      "name": "Second Contact",
-      "phone": "+01112223344",
-      "email": "contact@example.com",
-      "city": "Moscow",
-      "id": 3
+      "name": "Third Contact",
+      "email": "third@mail.com",
+      "phone": "89995522555",
+      "city": "Paris",
+      "id": 4
     }
   ],
   "users": [
