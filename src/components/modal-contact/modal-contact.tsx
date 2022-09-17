@@ -1,34 +1,36 @@
 import { useActions } from '../../hooks/use-actions';
 import { useModal } from '../../hooks/use-modal';
+import { useTypedSelector } from '../../hooks/use-typed-selector';
 import ModalLayout from '../../layouts/modal-layout/modal-layout';
+import { getCurrentContact } from '../../store/process/process-selectors';
 import Button from '../ui/button/button';
 import ModalCloseButton from '../ui/modal-close-button/modal-close-button';
 
 const ModalContact = () => {
   const { isModalContactOpen } = useModal();
-  const { toggleModalContact } = useActions();
+  const { toggleModalContact, clearCurrentContact } = useActions();
+  const { name, phone, city, email } = useTypedSelector(getCurrentContact);
+  const isCreate = name === undefined;
+
+
+  
 
   if (!isModalContactOpen) return null;
-
-  const contact = {
-    name: 'vasya',
-    phone: '',
-    city: '',
-    email: '',
-    id: null,
-  };
-  const { name, phone, city, email, id } = contact;
-  const isCreate = id === null;
-
   return (
     <ModalLayout>
       <div
         onClick={(e) => {
           e.stopPropagation();
+          clearCurrentContact();
         }}
         className='bg-white z-10 rounded-2xl py-10 px-8 relative min-h-max min-w-max max-w-2xl w-1/2'
       >
-        <ModalCloseButton handleModalClose={toggleModalContact} />
+        <ModalCloseButton
+          handleModalClose={() => {
+            toggleModalContact();
+            clearCurrentContact();
+          }}
+        />
         <div>
           <h2 className='mt-2 text-center text-3xl font-bold tracking-tight text-gray-900'>
             {isCreate ? 'Create contact' : 'Edit contact'}
@@ -63,6 +65,7 @@ const ModalContact = () => {
                 className='relative block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm'
                 placeholder='Email address'
                 defaultValue={email}
+                required
               />
             </div>
             <div>

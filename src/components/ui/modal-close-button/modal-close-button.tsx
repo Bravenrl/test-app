@@ -8,7 +8,7 @@ const ModalCloseButton = ({handleModalClose}: ModalCloseButtonProps) => {
     <button
       type='button'
       className='absolute rounded-2xl top-5 right-5 p-1 hover:bg-red-400 active:opacity-30'
-      onClick={()=>handleModalClose()}
+      onClick={handleModalClose}
     >
       <MaterialIcon name='MdClose' />
     </button>

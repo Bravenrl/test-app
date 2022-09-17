@@ -6,7 +6,7 @@ type CardProps = {
   contact: Contact;
 };
 const Card = ({ contact: { name, city, phone, email } }: CardProps) => {
-  const { toggleModalContact } = useActions();
+  const { toggleModalContact, setCurrentContact } = useActions();
   return (
     <div className='w-full h-full max-w-xl max-h-xl py-4'>
       <div className='rounded-lg mx-auto py-3 px-3 flex bg-white justify-around shadow-lg border border-gray-200 flex-nowrap'>
@@ -32,19 +32,22 @@ const Card = ({ contact: { name, city, phone, email } }: CardProps) => {
         </div>
         <div className='flex flex-col justify-around self-center h-28'>
           <button
-            onClick={()=>toggleModalContact()}
+            onClick={() => {
+              toggleModalContact();
+              setCurrentContact({ name, city, phone, email });
+            }}
             type='button'
             aria-label='Edit'
             className='text-indigo-600 hover:text-indigo-800 active:opacity-20'
           >
-            <MaterialIcon name='MdEdit' className='w-6 h-6'/>
+            <MaterialIcon name='MdEdit' className='w-6 h-6' />
           </button>
           <button
             type='button'
             aria-label='Delete'
             className='text-indigo-600 hover:text-indigo-800 active:opacity-20'
           >
-            <MaterialIcon name='MdDelete' className='w-6 h-6'/>
+            <MaterialIcon name='MdDelete' className='w-6 h-6' />
           </button>
         </div>
       </div>

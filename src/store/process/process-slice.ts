@@ -23,6 +23,7 @@ export const processSlice = createSlice({
     closeAllModals: (state) => {
       state.isModalAuthOpen = false;
       state.isModalContactOpen = false;
+      state.currentContact = {} as ContactNew;
     },
     setCurrentContact: (state, { payload }: PayloadAction<ContactNew>) => {
       state.currentContact = payload;
