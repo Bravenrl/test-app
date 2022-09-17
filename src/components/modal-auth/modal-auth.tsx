@@ -29,7 +29,6 @@ const ModalAuth = () => {
     if (submitType === 'login') {
       login(data);
     }
-    console.log(emailRef.current?.value, passwordRef.current?.value);
   };
 
   return (

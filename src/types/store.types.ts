@@ -10,4 +10,5 @@ export type ProcessInitialState = {
   isModalAuthOpen: boolean;
   isModalContactOpen: boolean;
   currentContact: ContactNew;
+  searchTerm: string,
 };

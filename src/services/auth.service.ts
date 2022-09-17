@@ -1,4 +1,4 @@
-import { api } from '../api/api';
+import { api } from '../api/axiosApi';
 import { ApiRoutes } from '../config/api.config';
 import { AuthDataReq, AuthDataRes } from '../types/data.types';
 

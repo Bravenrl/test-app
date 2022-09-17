@@ -10,3 +10,6 @@ export const getIsModalContactOpen = (state: TypeRootState): boolean =>
 
 export const getCurrentContact = (state: TypeRootState): ContactNew =>
   state[Reducer.Process].currentContact;
+
+export const getSearchTerm = (state: TypeRootState): string =>
+  state[Reducer.Process].searchTerm;

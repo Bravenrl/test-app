@@ -7,6 +7,7 @@ const initialState: ProcessInitialState = {
   isModalAuthOpen: false,
   isModalContactOpen: false,
   currentContact: {} as ContactNew,
+  searchTerm: '',
 };
 
 export const processSlice = createSlice({
@@ -28,6 +29,9 @@ export const processSlice = createSlice({
     },
     clearCurrentContact: (state) => {
       state.currentContact = {} as ContactNew;
+    },
+    setSearchTerm: (state, { payload }: PayloadAction<string>) => {
+      state.searchTerm = payload;
     },
   },
 });
