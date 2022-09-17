@@ -6,7 +6,7 @@ import { login, registration } from './user-thunk-actions';
 const initialState: UserInitialState = {
   user: '',
   isLoading: false,
-  error: null,
+  error: false,
 };
 
 export const userSlice = createSlice({
@@ -14,7 +14,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
-      state = initialState;
+      state.user = '';
     },
   },
   extraReducers(builder) {
@@ -27,10 +27,9 @@ export const userSlice = createSlice({
         state.user = payload;
         state.error = null;
       })
-      .addCase(registration.rejected, (state, { error }) => {
+      .addCase(registration.rejected, (state, actions) => {
         state.isLoading = false;
-        state.user = '';
-        state.error = error.message;
+        state.error = true;
       })
 
       .addCase(login.pending, (state) => {
@@ -41,9 +40,9 @@ export const userSlice = createSlice({
         state.user = payload;
         state.error = null;
       })
-      .addCase(login.rejected, (state, { error }) => {
+      .addCase(login.rejected, (state) => {
         state.isLoading = false;
-        state.error = error.message;
+        state.error = true;
       });
   },
 });

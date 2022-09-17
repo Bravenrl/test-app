@@ -1,14 +1,36 @@
+import { FormEvent, useRef, useState } from 'react';
 import { useActions } from '../../hooks/use-actions';
+import { useAuth } from '../../hooks/use-auth';
 import { useModal } from '../../hooks/use-modal';
 import ModalLayout from '../../layouts/modal-layout/modal-layout';
+import { AuthDataReq } from '../../types/data.types';
 import Button from '../ui/button/button';
 import ModalCloseButton from '../ui/modal-close-button/modal-close-button';
 
 const ModalAuth = () => {
+  const { isLoading, err } = useAuth();
   const { isModalAuthOpen } = useModal();
-  const { toggleModalAuth } = useActions();
+  const { toggleModalAuth, registration, login } = useActions();
+  const [submitType, setSubmitType] = useState<'register' | 'login' | ''>('');
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   if (!isModalAuthOpen) return null;
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = {
+      email: emailRef.current?.value,
+      password: passwordRef.current?.value,
+    } as AuthDataReq;
+    if (submitType === 'register') {
+      registration(data);
+    }
+    if (submitType === 'login') {
+      login(data);
+    }
+    console.log(emailRef.current?.value, passwordRef.current?.value);
+  };
 
   return (
     <ModalLayout>
@@ -27,13 +49,14 @@ const ModalAuth = () => {
             Or register if you don`t have account
           </p>
         </div>
-        <form className='mt-8 space-y-6'>
+        <form className='mt-8 space-y-6' onSubmit={handleSubmit}>
           <div className='-space-y-px rounded-md shadow-sm'>
             <div>
               <label htmlFor='email-address' className='sr-only'>
                 Email address
               </label>
               <input
+                ref={emailRef}
                 id='email-address'
                 name='email'
                 type='email'
@@ -48,6 +71,7 @@ const ModalAuth = () => {
                 Password
               </label>
               <input
+                ref={passwordRef}
                 id='password'
                 name='password'
                 type='password'
@@ -58,13 +82,30 @@ const ModalAuth = () => {
               />
             </div>
           </div>
+
           <div className='flex items-center justify-center text-sm text-red-700'>
-            Check the entered data
+            {!!err ? 'Check the entered data' : ''}
           </div>
 
           <div className='flex items-center justify-around'>
-            <Button type='submit'>Sign In</Button>
-            <Button type='submit'>Register</Button>
+            <Button
+              type={'submit'}
+              isDisabled={isLoading}
+              onClickHandler={() => {
+                setSubmitType('login');
+              }}
+            >
+              Sign In
+            </Button>
+            <Button
+              type={'submit'}
+              isDisabled={isLoading}
+              onClickHandler={() => {
+                setSubmitType('register');
+              }}
+            >
+              Register
+            </Button>
           </div>
         </form>
       </div>

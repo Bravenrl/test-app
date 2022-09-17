@@ -5,4 +5,4 @@ export const getUser = (state: TypeRootState): string | null => state[Reducer.Us
 
 export const getUserIsLoading = (state: TypeRootState): boolean => state[Reducer.User].isLoading;
 
-export const getUserError = (state: TypeRootState): string | null | undefined => state[Reducer.User].error;
+export const getUserError = (state: TypeRootState): string | null | undefined | boolean=> state[Reducer.User].error;
