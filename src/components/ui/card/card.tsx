@@ -37,14 +37,14 @@ const Card = ({ contact: { name, city, phone, email } }: CardProps) => {
             aria-label='Edit'
             className='text-indigo-600 hover:text-indigo-800 active:opacity-20'
           >
-            <MaterialIcon name='MdEdit' />
+            <MaterialIcon name='MdEdit' className='w-6 h-6'/>
           </button>
           <button
             type='button'
             aria-label='Delete'
             className='text-indigo-600 hover:text-indigo-800 active:opacity-20'
           >
-            <MaterialIcon name='MdDelete' />
+            <MaterialIcon name='MdDelete' className='w-6 h-6'/>
           </button>
         </div>
       </div>

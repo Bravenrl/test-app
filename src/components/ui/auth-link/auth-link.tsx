@@ -25,7 +25,7 @@ const AuthLink = () => {
   ) : (
     <span
       className={cx(
-        'bg-red-400 h-44 w-1/2 flex-center rounded-xl shadow-lg active:shadow-none hover:bg-red-500 transition-opacity max-w-lg',
+        'bg-red-400 h-44 w-1/2 flex-center rounded-xl shadow-lg transition-opacity max-w-lg',
         {
           'opacity-0': isModalAuthOpen,
         }
