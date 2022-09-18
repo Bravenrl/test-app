@@ -16,6 +16,9 @@ export const userSlice = createSlice({
     logout: (state) => {
       state.user = '';
     },
+    clearUserError: (state) => {
+      state.error = false;
+    },
   },
   extraReducers(builder) {
     builder

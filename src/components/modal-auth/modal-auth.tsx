@@ -10,7 +10,7 @@ import ModalCloseButton from '../ui/modal-close-button/modal-close-button';
 const ModalAuth = () => {
   const { isLoading, err } = useAuth();
   const { isModalAuthOpen } = useModal();
-  const { toggleModalAuth, registration, login } = useActions();
+  const { toggleModalAuth, registration, login, clearUserError } = useActions();
   const [submitType, setSubmitType] = useState<'register' | 'login' | ''>('');
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
@@ -39,7 +39,12 @@ const ModalAuth = () => {
         }}
         className='bg-white rounded-2xl py-10 px-8 relative max-w-4xl min-w-max z-10'
       >
-        <ModalCloseButton handleModalClose={toggleModalAuth} />
+        <ModalCloseButton
+          handleModalClose={() => {
+            toggleModalAuth();
+            clearUserError();
+          }}
+        />
         <div>
           <h2 className='mt-2 text-center text-3xl font-bold tracking-tight text-gray-900'>
             Sign in to your account
