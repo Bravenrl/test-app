@@ -1,7 +1,7 @@
 import { useDeleteContactMutation } from '../../../api/contactsApi';
 import { useActions } from '../../../hooks/use-actions';
 import { Contact } from '../../../types/data.types';
-import MaterialIcon from '../material-icon/material-icon';
+import SvgButton from '../svg-button/svg-button';
 
 type CardProps = {
   contact: Contact;
@@ -34,25 +34,23 @@ const Card = ({ contact }: CardProps) => {
           </a>
         </div>
         <div className='flex flex-col justify-around self-center h-28'>
-          <button
-            onClick={() => {
+          <SvgButton
+            className='w-6 h-6'
+            onClickHandler={() => {
               toggleModalContact();
               setCurrentContact(contact);
             }}
-            type='button'
-            aria-label='Edit'
-            className='text-indigo-600 hover:text-indigo-800 active:opacity-20'
-          >
-            <MaterialIcon name='MdEdit' className='w-6 h-6' />
-          </button>
-          <button
-            onClick={() => {deleteContact(id)}}
-            type='button'
-            aria-label='Delete'
-            className='text-indigo-600 hover:text-indigo-800 active:opacity-20'
-          >
-            <MaterialIcon name='MdDelete' className='w-6 h-6' />
-          </button>
+            name='MdEdit'
+            label='Edit'
+          />
+          <SvgButton
+            className='w-6 h-6'
+            onClickHandler={() => {
+              deleteContact(id);
+            }}
+            name='MdDelete'
+            label='Delete'
+          />
         </div>
       </div>
     </div>

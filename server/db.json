@@ -67,6 +67,11 @@
       "email": "test5@test.ru",
       "password": "$2a$10$dxcNK08smEmprXilmvSpbO75ohLx8apzFnZ2Zbq0XfaX9I9eycdQ2",
       "id": 9
+    },
+    {
+      "email": "bb@cc.ru",
+      "password": "$2a$10$YDUrU4e8z8L5PyiUndP9t.nTj0YRh6F0x/DJ77q03JGg7ZVdebGcy",
+      "id": 10
     }
   ]
 }
