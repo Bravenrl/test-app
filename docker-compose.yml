@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  test-app:
+    container_name: test-app
+    build: .
+    restart: always
+    ports:
+      - 3000:3000
+      - 3004:3004
+    volumes:
+      - ./server:/server

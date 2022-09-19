@@ -24,54 +24,9 @@
   ],
   "users": [
     {
-      "email": "typicode@gmail.com",
-      "password": "typicode",
+      "email": "admin@admin.com",
+      "password": "$2a$10$Tq5OkpvV.pmju6tX3ZjB.OMklbzSYIcOunhc/3muPKx9hNOn44VnW",
       "id": 1
-    },
-    {
-      "email": "user3@mail.me",
-      "password": "$2a$10$s/tAaXAsW297nbFsz1m.Bu8EIwW1C917MH6S.AnlizrzmCmRkzYCm",
-      "id": 2
-    },
-    {
-      "email": "user@auth.ru",
-      "password": "$2a$10$OpJP17TZpn/nWU6nx4RpsuP0tLHAmw0jmSQzvpL1ongmkzh1WCuEu",
-      "id": 3
-    },
-    {
-      "email": "user2@auth.ru",
-      "password": "$2a$10$I7S6k9bLZiTP9bGc1q59suGtSC3O6x/u/VWndAFKJT8oYaHl0sjjK",
-      "id": 4
-    },
-    {
-      "email": "ddd@4444.ddd",
-      "password": "$2a$10$uzYk8odMvV5wwKg38rCbc.ayJFHJT/Hu7aiwB09RjPvbVcKxd6Bse",
-      "id": 5
-    },
-    {
-      "email": "d@4444.ddd",
-      "password": "$2a$10$hljo16AhFdlNjrBulLGppeZbrhVOO2zNhhFPjljCM3KZGEPKjpaMG",
-      "id": 6
-    },
-    {
-      "email": "ddd@4444.de",
-      "password": "$2a$10$EzegnmkE0LTPDyy9IMxxfOy0Sn1OuDu.5K/9EsBINYeXFFiRQ0qiW",
-      "id": 7
-    },
-    {
-      "email": "test2@test.ru",
-      "password": "$2a$10$uCq41KP7Ran7.hWNfG.d8OpPKT.63abJSKcd1LNnpe.HgnDGdRcSW",
-      "id": 8
-    },
-    {
-      "email": "test5@test.ru",
-      "password": "$2a$10$dxcNK08smEmprXilmvSpbO75ohLx8apzFnZ2Zbq0XfaX9I9eycdQ2",
-      "id": 9
-    },
-    {
-      "email": "bb@cc.ru",
-      "password": "$2a$10$YDUrU4e8z8L5PyiUndP9t.nTj0YRh6F0x/DJ77q03JGg7ZVdebGcy",
-      "id": 10
     }
   ]
 }
